@@ -1,0 +1,73 @@
+---
+// agenda.astro
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import CreateDisponibilityModal from '../components/Modals/CreateDisponibilityModal.astro';
+import Calendar from '../components/Calendar.astro';
+import ClientModal from '../components/Modals/ClientModal.astro';
+import AppointmentDetailsModal from '../components/Modals/AppointmentDetailsModal.astro'; // Importe o novo modal
+import ReportModal from '../components/Modals/ReportModal.astro'; // Importe o modal de relatório
+
+import '../assets/styles/agenda.css';
+---
+
+<Layout>
+  <Header />
+  <main>
+    
+    <section class="container-home">
+      <img src="/logo1 - crop.png" class="logo" alt="Ávila Lótus - Logo 1 (Branco)">
+    </section>
+
+    <div class="tabs">
+      <span class="tab active" id="disponibilidade-tab">Disponibilidade</span>
+      <span class="tab" id="agendamentos-tab">Agendamentos</span>
+    </div>
+
+    <section class="container-main flex" id="disponibilidade-container">
+      <h1>Agenda de Horários</h1>
+
+      <Calendar />
+      <div>
+        <h2 class="text-center">Horários disponíveis</h2>
+        <div class="horarios-container text-center" id="horarios-disponiveis-container">
+          Clique em uma data para ver os horários disponíveis.
+        </div>
+      </div>
+    </section>
+    <section class="container-main hidden" id="agendamentos-container">
+      <h2 class="text-center">Horários marcados</h2>
+      <div class="horarios-container text-center flex wrap" id="horarios-agendados-container"></div>
+    </section>
+    <div class="floating-buttons">
+      <button class="add-horario-btn" id="add-horario-btn" title="Adicionar Horário">
+        <i class="bi bi-calendar-plus"></i>
+      </button>
+      <button class="add-horario-btn" id="open-relatorio-btn" title="Abrir Relatório">
+        <i class="bi bi-file-earmark-bar-graph"></i>
+      </button>
+    </div>
+  </main>
+  <CreateDisponibilityModal/>
+  <ClientModal/>
+  <AppointmentDetailsModal />
+  <ReportModal />
+  
+</Layout>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const addButton = document.querySelector('.add-horario-btn');
+    const modal = document.getElementById('disponibility-modal');
+
+    if (addButton && modal) {
+      addButton.addEventListener('click', () => {
+        modal.classList.remove('hidden');
+      });
+    }
+  });
+</script>
+<script>
+import { agenda } from '../assets/scripts/agenda.js';
+document.addEventListener('DOMContentLoaded', agenda);
+</script>

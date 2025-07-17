@@ -1,0 +1,57 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Button from '../components/Button.astro';
+
+import '../assets/styles/sobre.css';
+import InformativeModal from '../components/Modals/InformativeModal.astro';
+import Input from '../components/Input.astro';
+---
+
+<Layout>
+	<Header/>
+
+	<InformativeModal 
+		title="Bem Vinda!" 
+		content="Sua conta na Ávila Lótus foi criada com sucesso! Agora preencha seu perfil para começar a usar nossos serviços."
+	/>
+
+	<main>
+        <section class="container-home">
+            <img src="/logo1 - crop.png" class="logo" alt="Ávila Lótus - Logo 1 (Branco)">
+        </section>
+	
+		<section class="container-main">
+			<section class="about">
+				<div class="title">
+					<h2>Sobre Mim</h2>
+					<Button id="edit-about-btn">Editar</Button>
+				</div>
+				<div class="" id="info">
+					<Input id="nome-input" placeholder="Seu nome..." type="text" disabled>Nome:</Input>
+					<Input id="pix-input" placeholder="Seu PIX..." type="tex" disabled>PIX:</Input>
+				</div>
+				<!-- Carregado dinamicamente -->
+				<p id="about-me" class="ml-[0.5rem]">
+					Nada aqui ainda.
+				</p>
+			</section>
+			<section class="services">
+				<div class="title">
+					<h2>Serviços</h2>
+					<Button id="edit-services-btn">Editar</Button>
+				</div>
+				<div id="services-valeria" class="mt-2 ml-[0.5rem]">
+					<p>Nada aqui ainda.</p>
+				</div>
+				<Button id="add-service-btn">Adicionar Serviço</Button>
+			</section>			
+			<Button id="reserve-btn" href="/agenda">Agende seu horário!</Button>
+		</section>
+	</main>
+</Layout>
+
+<script>
+import { sobre } from '../assets/scripts/sobre.js';
+document.addEventListener('DOMContentLoaded', sobre);
+</script>

@@ -1,0 +1,421 @@
+---
+// src/components/Modals/AppointmentDetailsModal.astro
+---
+
+<div class="modal" id="appointment-details-modal">
+    <div class="modal-content">
+      <div class="status-bar">
+        <span class="status-indicator aguardando"></span>
+        <span id="modal-status-text">Pendente</span>
+      </div>
+      <div class="client-info">
+        <div class="info-item">
+          <i class="bi bi-person-fill"></i>
+          <span id="modal-cliente-nome">Cliente...</span>
+        </div>
+        <div class="info-item">
+          <i class="bi bi-envelope-fill"></i>
+          <span id="modal-cliente-email">cliente@exemplo.com</span>
+        </div>
+      </div>
+      <div class="appointment-details-card">
+        <h3 class="service-name">Massagem</h3>
+        <p class="date-time">
+          <span id="modal-data-completa">Segunda Feira, 31 Mar</span><br>
+          <span id="modal-horario-completo">09:40-10:40</span>
+        </p>
+        <hr class="separator">
+        <div class="price-date-container">
+          <div class="price">
+            R$ <span id="modal-valor-formatado">80,00</span>
+          </div>
+          <div class="date-circle">
+            <span class="day" id="modal-dia">31</span>
+            <span class="month" id="modal-mes-abreviado">Mar</span>
+          </div>
+        </div>
+      </div>
+      <div class="approval-buttons" id="appointment-modal-actions">
+        <button class="reject-button" id="reject-appointment-btn">
+          Recusar
+          <i class="bi bi-x-lg"></i>
+        </button>
+        <button class="accept-button" id="accept-appointment-btn">
+          Aceitar
+          <i class="bi bi-check-lg"></i>
+        </button>
+        <button class="cancel-aproved-button hidden" id="cancel-appointment-btn">
+          Cancelar
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+      <div id="presenca-container" class="approval-buttons">
+        <button id="btn-compareceu" class="present-button flex">
+          Cliente Compareceu 
+          <i class="bi bi-check-circle-fill ml-1"></i>
+        </button>
+        <button id="btn-nao-compareceu" class="absent-button flex">
+          Cliente Ausente
+          <i class="bi bi-x-circle-fill ml-1"></i>
+        </button>
+      </div>
+      <div class="rejection-reason" id="cancel-reason-section" style="display: none;">
+        <label for="motivo-recusa">
+          <i class="bi bi-pencil-square"></i> Motivo do Cancelamento
+        </label>
+        <textarea id="motivo-recusa" placeholder="Ex: Problema de saúde"></textarea>
+      </div>
+      <div class="rejection-upload" id="rejection-reason-section" style="display: none;">
+        <h3 class="text-center font-bold m-0 mb-1">Reembolso Pendente</h3>
+        <label for="reject-dropzone-comprovante" class="mx-auto cursor-pointer flex max-w-xs flex-col items-center rounded-xl border-2 border-dashed border-[#544837]-400 bg-white p-6 text-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-[#544837]-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+          </svg>
+      
+          <h2 class="mt-4 text-xl font-medium text-[#544837]-700 tracking-wide">Comprovante de Pagamento</h2>
+      
+          <p class="mt-2 text-[#544837]-500 tracking-wide">Arraste e solte ou clique para enviar seu comprovante PDF</p>
+          <p class="mt-2 text-[#544837]-500 tracking-wide"><i>Tam MAX: 500KB</i></p>
+      
+          <input 
+            id="reject-dropzone-comprovante" 
+            type="file" 
+            class="hidden"
+            accept=".pdf,application/pdf"
+            name="comprovante"
+            required
+          >
+          
+          <p class="reject-file-name mt-2 text-[#544837]-500 font-bold"></p>
+        </label>
+        <div id="pix-cliente-info" class="pix-info">
+          <h3 class="pix-title">Chave PIX para pagamento</h3>
+          <p class="pix-key" id="pix-cliente-key">Carregando chave PIX...</p>
+        </div>
+      </div>      
+      <div class="action-buttons">
+        <button class="cancel-button" id="cancel-modal-btn">Fechar</button>
+        <button class="confirm-button" id="confirm-modal-btn">Confirmar</button>
+      </div>
+    </div>
+  </div>
+  
+  <style>
+    .modal {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      z-index: 10;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: 100%;
+      background-color: rgba(205, 190, 174, 0.5); /* Cor de fundo bege com transparência */
+      overflow: auto;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fonte similar */
+    }
+  
+    .modal.show {
+      display: flex;
+    }
+  
+    .modal-content {
+      background-color: #D0B291; /* Tom de bege mais claro para o conteúdo */
+      padding: 40px;
+      gap: 25px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      min-width: 350px;
+      /* Opção 1: Aumentar ainda mais o max-width */
+      max-width: 700px;
+      /* Opção 2: Definir uma largura mínima */
+      /* min-width: 500px; */
+      /* Opção 3: Usar unidades relativas para a largura (experimente diferentes valores) */
+      /* width: 80vw; */
+      max-height: 70%;
+      overflow-y: auto; /* Adiciona rolagem vertical se necessário */
+      color: #544837; /* Cor do texto principal */
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #332402; /* Borda sutil */
+      scrollbar-color: rgba(84, 72, 55, 0.5) transparent; /* cor da thumb e do track */
+    }
+
+    .modal-content::-webkit-scrollbar {
+      width: 12px; /* largura padrão do Firefox */
+    }
+
+    .modal-content::-webkit-scrollbar-track {
+      background: transparent; /* remove o fundo branco da trilha */
+    }
+
+    .modal-content::-webkit-scrollbar-thumb {
+      background-color: rgba(84, 72, 55, 0.5); /* cor da barra */
+      border-radius: 10px;
+      border: 2px solid transparent; /* espaço interno */
+      background-clip: content-box;
+    }
+
+    .status-bar {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+  
+    .status-indicator {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      font-weight: bold;
+      font-size: large;
+    }
+  
+    .aguardando {
+      background-color: gold; /* Amarelo */
+    }
+  
+    .confirmado {
+      background-color: #4CAF50; /* Verde */
+    }
+  
+    .cancelado {
+      background-color: #f44336; /* Vermelho */
+    }
+  
+    .finalizado {
+      background-color: #2196F3; /* Azul */
+    }
+  
+    .client-info {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px;
+      background-color: #FFFCF6;
+      border-radius: 10px;
+      border: 1px solid #e0d6c9;
+    }
+  
+    .info-item i {
+      font-size: 1.4em;
+      color: #79644f;
+    }
+  
+    .appointment-details-card {
+      background-color: #F2ECDF;
+      border-radius: 10px;
+      padding: 12px;
+      border: none;
+    }
+  
+    .service-name {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 1.7em;
+      color: #544837;
+      font-weight: bold;
+    }
+  
+    .date-time {
+      color: #79644f;
+      font-size: 1.1em;
+    }
+  
+    .price-date-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 15px;
+    }
+  
+    .price {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #544837;
+    }
+  
+    .date-circle {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: #E1CAB0;
+      color: #79644f;
+      font-weight: bold;
+    }
+  
+    .day {
+      font-size: 1.3em;
+    }
+  
+    .month {
+      font-size: 0.8em;
+    }
+  
+    .approval-buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      margin-top: 20px;
+    }
+  
+    .reject-button,
+    .cancel-aproved-button,
+    .accept-button,
+    .present-button,
+    .absent-button {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1.1em;
+      background-color: #F2ECDF;
+    }
+  
+    .reject-button {
+      color: #d32f2f;
+      border: 2px solid #d32f2f;
+    }
+
+    .cancel-aproved-button {
+      color: #e65729;
+      border: 2px solid #e65729;
+    }
+  
+    .accept-button {
+      color: #388e3c;
+      border: 2px solid #388e3c;
+    }
+
+    .present-button {
+      color: #388e3c;
+      border: 2px solid #388e3c;
+    }
+
+    .absent-button {
+      color: #d32f2f;
+      border: 2px solid #d32f2f;
+    }
+  
+    .reject-button .icon,
+    .accept-button .icon,
+    .cancel-aproved-button .icon,
+    .present-button .icon,
+    .absent-button .icon {
+      font-size: 1.8em;
+      margin-top: 8px;
+    }
+  
+    .rejection-reason {
+      margin-top: 25px;
+    }
+  
+    .rejection-reason label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: bold;
+      color: #79644f;
+      margin-bottom: 10px;
+    }
+  
+    .rejection-reason i {
+      font-size: 1.4em;
+      color: #79644f;
+    }
+  
+    .rejection-reason textarea {
+      width: 100%;
+      padding: 12px;
+      border:none;
+      background-color: #E1CAB0;
+      border-radius: 8px;
+      box-sizing: border-box;
+      resize: vertical;
+      font-size: 1em;
+      color: #544837;
+    }
+  
+    .action-buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      margin-top: 25px;
+    }
+  
+    .cancel-button,
+    .confirm-button {
+      flex: 1;
+      padding: 12px 15px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      border-color: #332402;
+      font-size: 1.1em;
+      background-color: #FFFCF6; /* Bege escuro acinzentado */
+    color: #332402;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  
+    .separator {
+      border-top: 1px solid #332402; /* Linha de separação mais escura */
+      margin: 15px 0;
+    }
+
+    .pix-info {
+      margin-top: 1rem;
+      padding: 1rem;
+      background-color: #f9f7f4;
+      border: 1px dashed #544837;
+      border-radius: 0.5rem;
+      text-align: center;
+    }
+
+    .pix-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #544837;
+    }
+
+    .pix-key {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #2f2f2f;
+      margin-top: 0.5rem;
+      word-break: break-word;
+    }
+
+    .pix-copy-icon {
+      font-size: 1.2rem; /* Ícone levemente maior */
+      transition: 0.2s ease-in-out;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+
+    .pix-copy-icon:hover {
+      transform: scale(1.1);
+      transition: 0.2s ease-in-out;
+    }
+  </style>
+  
+  <script>
+    import { appointmentDetailsModal } from '../../assets/scripts/components/modals/appointmentdetailsmodal.js';
+    document.addEventListener('DOMContentLoaded', appointmentDetailsModal);
+  </script>  

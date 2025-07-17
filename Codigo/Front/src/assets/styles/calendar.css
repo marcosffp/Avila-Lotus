@@ -1,0 +1,62 @@
+.calendario-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.calendario-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+}
+
+.mes-atual {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: black;
+  text-align: center;
+}
+
+.dias-semana {
+  display: flex;
+  justify-content: center;
+  gap: 10%;
+}
+
+.dia {
+  flex: 1 1 14.28%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  transition: transform 0.2s;
+  font-size: 1.2rem;
+  color: gray;
+}
+
+.numero-dia {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s, color 0.3s;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.numero-dia.selecionado {
+  background-color: var(--color-secondary);
+  color: white;
+}
+
+.numero-dia:not(.selecionado) {
+  background-color: transparent;
+  color: black;
+  border: solid 2px var(--color-secondary);
+}

@@ -1,0 +1,54 @@
+#information-modal {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1); /* Translucent background */
+    color: var(--color-primary);
+    backdrop-filter: blur(10px); /* Apply blur effect */
+    position: fixed; /* Position fixed to stay on top */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 20; /* Ensure it appears above most content */
+}
+
+/* Optional: Add a dark overlay for a glass-like effect */
+#information-modal::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Darkened overlay */
+    z-index: -1; /* Make sure the overlay is behind the modal */
+}
+
+#information-modal h2 {
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+#information-modal p {
+    font-size: 1rem;
+    text-align: center;
+}
+
+/* Style the Button */
+#information-modal-btn {
+    width: 30%;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#information-modal-btn:hover {
+    background-color: var(--color-secondary);
+}

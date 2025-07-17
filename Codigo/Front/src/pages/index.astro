@@ -1,0 +1,74 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Button from "../components/Button.astro";
+
+import "../assets/styles/index.css";
+
+const massoterapy = [
+  {
+    image: "/massoterapia/relaxante.jpg",
+    title: "Massagem Relaxante",
+    description:
+      "A massagem relaxante proporciona relaxamento muscular e redução do estresse.",
+  },
+  {
+    image: "/massoterapia/terapeutica.jpg",
+    title: "Massagem Terapêutica",
+    description:
+      "Utiliza movimentos mais fortes para aliviar dores musculares e tensões.",
+  },
+  {
+    image: "/massoterapia/miofascial.jpg",
+    title: "Liberação Miofascial",
+    description:
+      "Melhora a mobilidade e alivia tensões com técnicas específicas.",
+  },
+  {
+    image: "/massoterapia/ventosa.jpg",
+    title: "Ventosa Terapia",
+    description:
+      "Promove circulação sanguínea e alívio de dores por meio de sucção controlada.",
+  },
+];
+---
+
+<Layout>
+  <Header />
+  <main>
+    <section class="container-home">
+      <img src="/logo1 - crop.png" alt="Ávila Lótus - Logo 1 (Branco)" />
+      <h1 class="title">Ávila Lotus</h1>
+      <p class="copy">
+        Redescubra o equilíbrio do seu corpo e mente com nossos tratamentos de
+        massoterapia.
+        <br /> Agende agora e sinta o poder do bem-estar!
+      </p>
+      <div class="btn-group">
+        <Button id="about-btn" href="/sobre">Sobre Mim</Button>
+        <Button id="reserve-btn" href="/agenda">Agendar</Button>
+      </div>
+    </section>
+
+    <section class="container-main">
+      <h2 class="text-center">Sobre a Massoterapia</h2>
+      <div class="container-massoterapy">
+        {
+          massoterapy.map((item) => (
+            <figure class="massoterapy-item">
+              <div class="icone-spa">
+                <i class="fa-solid fa-spa" />
+              </div>
+              <img src={item.image} alt={item.title} />
+              <figcaption>{item.description}</figcaption>
+              <h3>{item.title}</h3>
+            </figure>
+          ))
+        }
+      </div>
+      <div class="btn-group">
+        <Button id="reserve-btn" href="/agenda">AGENDAR SESSÃO</Button>
+      </div>
+    </section>
+  </main>
+</Layout>

@@ -1,0 +1,114 @@
+---
+const { name, onChange } = Astro.props;
+let disabled = true;
+---
+
+  <div class="container-anam">
+    <div class="question">
+      <strong><slot /></strong>
+
+      <div class="options">
+        <label>
+          <input
+            id={`${name}-sim-radio`}
+            type="radio"
+            name={name}
+            value="Sim"
+            onchange={onChange}
+            disabled={disabled}
+          /> Sim
+        </label>
+        <label>
+          <input
+            id={`${name}-nao-radio`}
+            type="radio"
+            name={name}
+            value="Não"
+            onchange={onChange}
+            disabled={disabled}
+          /> Não
+        </label>
+      </div>
+    </div>
+    <div class="anam-text">
+      <label for={`${name}-input`}>Se sim, qual?</label>
+      <input
+        id={`${name}-input`}
+        type="text"
+        placeholder="Descreva aqui..."
+        value=""
+        oninput={onChange}
+        disabled={disabled}
+      />
+    </div>
+  </div>
+
+<style>
+  .container-anam {
+    font-size: 15px;
+    color: #332402;
+    padding: 0.5rem;
+  }
+
+  .options {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    font-size: 14px;
+    gap: 5px;
+  }
+
+  .options input[type="radio"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: solid #332402;
+    border-width: 2px 2px 3px;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: transparent;
+    display: inline-block;
+    vertical-align: text-bottom;
+  }
+
+  .options input[type="radio"]:checked {
+    background-color: #332402;
+    transition: 200ms ease-in-out;
+  }
+
+  .anam-text {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    font-size: 13px;
+  }
+
+  .anam-text input {
+    padding: 0.5rem;
+    border: none;
+    border-bottom: 2px solid #332402;
+    border-radius: 7px 7px 0 0;
+    font-size: 14px;
+    background-color: #e3d9c4;
+    width: 100%;
+    color: #332402;
+  }
+  .anam-text input::placeholder {
+    color: #3d3626;
+  }
+  .anam-text input:focus {
+    border-color: #6d4e25;
+    outline: none;
+    box-shadow: 0 0 4px #6d4e25;
+  }
+
+  .question {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 7px;
+  }
+  label {
+    white-space: nowrap;
+  }
+</style>

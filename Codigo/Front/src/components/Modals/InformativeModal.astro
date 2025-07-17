@@ -1,0 +1,25 @@
+---
+import Button from "../Button.astro"
+
+import "../../assets/styles/modals/informative.css"
+
+const {title, content} = Astro.props
+---
+
+<article class="modal hidden" id="information-modal">
+    <h2>{title}</h2>
+    <p>{content}</p>
+    <Button id="information-modal-btn">OK</Button>
+</article>
+
+<script>
+    const informationModalBtn = document.getElementById('information-modal-btn');
+    const modal = document.getElementById('information-modal');
+
+    // Verificar se os elementos existem antes de adicionar o evento
+    if (informationModalBtn && modal) {
+        informationModalBtn.addEventListener('click', () => {
+            modal.classList.add('hidden');
+        });
+    }
+</script>

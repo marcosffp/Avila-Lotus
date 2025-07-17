@@ -1,0 +1,242 @@
+.container-home {
+    height: 100vh;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url(https://www.clinicahumanita.com.br/wp-content/uploads/2024/02/Massagem-com-oleos-aquecidos.png) no-repeat center/cover;
+    color: var(--color-primary);
+}
+
+.container-home img {
+    width: 30%;
+    margin-bottom: 20px;
+    filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
+}
+
+.container-home .title {
+    font-size: 3rem;
+    font-family: var(--title-font);
+    margin: 0;
+    font-weight: 400;
+}
+
+.container-home .copy {
+    margin: 0 20%;
+    text-align: center;
+    font-size: 1.3rem;
+    font-family: var(--text-font);
+}
+
+.container-main {
+    width: 100%;
+    padding-bottom: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--color-primary);
+}
+
+.text-center {
+    font-family: var(--subtitle-font);
+    text-align: center;
+    font-size: 1.9rem;
+    line-height: 1.5;
+    color: var(--color-accent);
+}
+
+.container-massoterapy {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 18px;
+    padding: 10px;
+}
+
+.massoterapy-item {
+    position: relative;
+    width: 340px;
+    min-height: 300px;
+    background: var(--color-primary);
+    border-radius: 20px;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: black;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+    margin: 0 20px;
+    padding: 10px 10px 20px;
+}
+
+.icone-spa {
+    position: absolute;
+    background-color: var(--color-primary);
+    color: var(--color-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.563rem;
+    width: 70px;
+    height: 70px;
+    right: -10px;
+    top: -10px;
+    border-radius: 0px 37.5px 0px 42.5px;
+}
+
+.massoterapy-item:hover {
+    transform: scale(1.02);
+}
+
+.massoterapy-item img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+    transition: transform 0.3s ease;
+}
+
+.massoterapy-item:hover img {
+    transform: scale(1.05);
+}
+
+.massoterapy-item figcaption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px;
+    background: var(--color-primary);
+    color: var(--color-accent);
+    font-size: 1rem;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(10px);
+    white-space: normal;
+    word-wrap: break-word;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    font-family: var(--text-font);
+}
+
+.massoterapy-item:hover figcaption {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.massoterapy-item h3 {
+    font-size: 1.3rem;
+    margin-top: 15px;
+    color: var(--color-accent);
+    font-family: var(--text-font);
+    font-weight: 500;
+}
+
+.btn-group {
+    display: flex;
+    width: 75%;
+    justify-content: center;
+    gap: 5%;
+}
+
+.btn-group .btn {
+    padding: 20px;
+    width: 25%; 
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 34px;
+    background: var(--color-accent);
+    color: beige;
+    box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, background-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+.btn-group .btn:hover {
+    background-color: var(--color-primary);
+    color: var(--color-text);
+    transform: scale(1.05);
+}
+
+.banner {
+    width: 100%;
+    height: 200px; 
+    background-color: var(--color-accent); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -270px;
+    padding: auto;
+    
+}
+
+.banner p {
+    font-family: var(--subtitle-font);
+    font-size: 2.4rem; 
+    color: var(--color-primary); 
+    text-align: center;
+    margin: 0;
+    padding: 0 50px; 
+}
+
+@media screen and (max-width: 480px) {
+    .container-home {
+        text-align: center;
+    }
+
+    .container-home img {
+        width: 80%;
+    }
+
+    .container-home .title {
+        font-size: 3rem;
+    }
+
+    .container-home .copy {
+        margin: 0 8%;
+        font-size: 1.5rem;
+    }
+
+    .container-main {
+        padding-bottom: 10%;
+    }
+
+    .massoterapy-item {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .massoterapy-item img {
+        height: 180px;
+    }
+
+    .massoterapy-item h3 {
+        font-size: 1.5rem;
+    }
+
+    .massoterapy-item h3 {
+        order: -1;
+        margin-top: 30px;
+    }
+    .btn-group {
+        flex-wrap: nowrap;
+        gap: 25px; 
+        justify-content: center;
+        padding: 10px; 
+        margin-left: 10px;
+        display: flex;
+    }
+
+    .btn-group .btn {
+        width: auto;
+        font-size: 1.2rem; 
+        padding: 15px 20px;
+    }
+}

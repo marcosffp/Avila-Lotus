@@ -1,0 +1,115 @@
+#disponibility-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 3px solid #332402;
+  border-radius: 15px;
+  padding: 2rem;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 90%;
+  max-width: 400px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  background: rgba(255, 255, 255, 0.1); /* Translucent background */
+  color: var(--color-primary);
+  backdrop-filter: blur(20px); /* Apply blur effect */
+}
+
+#disponibility-modal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* Darkened overlay */
+  z-index: -1; /* Make sure the overlay is behind the modal */
+}
+
+#disponibility-modal.hidden {
+  display: none;
+}
+
+.modal-buttons {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Estiliza os inputs de Data e Hora */
+#disponibility-modal input[type="date"],
+#disponibility-modal input[type="time"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 2px solid #332402;
+  border-radius: 10px;
+  background-color: #f6f2eb;
+  color: #332402;
+  text-align: center;
+  outline: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* Efeito de foco nos inputs */
+#disponibility-modal input[type="date"]:focus,
+#disponibility-modal input[type="time"]:focus {
+  border-color: #6d4e25;
+  box-shadow: 0 0 5px #6d4e25;
+}
+
+/* Placeholder dos inputs */
+#disponibility-modal input[type="date"]::placeholder,
+#disponibility-modal input[type="time"]::placeholder {
+  color: #8c6b41;
+  opacity: 0.7;
+}
+
+/* Estiliza os botões */
+#disponibility-modal button {
+  width: 100%;
+  font-size: 1rem;
+  padding: 10px;
+}
+
+#disponibility-create-btn {
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  border-radius: 25px;
+  border: none;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+#disponibility-create-btn:hover {
+  background-color: var(--color-accent);
+  color: white;
+  transform: scale(1.03);
+}
+
+#disponibility-cancel-btn {
+  background-color: transparent;
+  color: #332402;
+  border: 2px solid #332402;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+#disponibility-cancel-btn:hover {
+  background-color: #332402;
+  color: #f6f2eb;
+  transform: scale(1.03);
+}

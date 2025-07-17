@@ -1,0 +1,161 @@
+#client-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 3px solid #332402;
+  border-radius: 15px;
+  padding: 2rem;
+  z-index: 10;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 90%;
+  max-width: 400px;
+  max-height: 70%;
+  overflow-y: scroll;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  background: rgba(81, 61, 61, 0.5); /* Translucent background */
+  backdrop-filter: blur(20px); /* Apply blur effect */
+}
+
+#client-modal .service-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  align-items: center;
+  text-align: center;
+  color: var(--color-primary);
+}
+
+#client-modal .observation-input {
+  margin: 0.5rem 0;
+}
+
+#client-modal .observation-input input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  font-size: 1rem;
+  border-radius: 12px;
+  border: solid 2px #332402;
+  background-color: #ffffff;
+}
+
+.modal-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+#client-modal button {
+  width: 100%;
+  font-size: 1rem;
+  padding: 10px;
+}
+
+#client-confirm-btn {
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  border-radius: 25px;
+  border: none;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+#client-confirm-btn:hover {
+  background-color: var(--color-accent);
+  color: white;
+  transform: scale(1.03);
+}
+
+#client-cancel-btn {
+  background-color: transparent;
+  color: #332402;
+  border: 2px solid #332402;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+#client-cancel-btn:hover {
+  background-color: #332402;
+  color: #f6f2eb;
+  transform: scale(1.03);
+}
+
+#client-modal .service-date {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
+  color: #332402;
+}
+
+#client-modal .service-time {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: 0.2rem;
+  color: #79644f;
+}
+
+#client-modal .service-price {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 0.6rem;
+  margin-bottom: 0.3rem;
+  color: var(--color-secondary); /* ou outra cor de destaque */
+}
+
+#client-modal .input-container {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  color: var(--color-primary);
+}
+
+#client-modal .pix-info {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #f9f7f4;
+  border: 1px dashed #544837;
+  border-radius: 0.5rem;
+  text-align: center;
+}
+
+#client-modal .pix-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #544837;
+}
+
+#client-modal .pix-key {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #2f2f2f;
+  margin-top: 0.5rem;
+  word-break: break-word;
+}
+
+#client-modal .pix-copy-icon {
+  font-size: 1.2rem; /* Ícone levemente maior */
+  transition: 0.2s ease-in-out;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+#client-modal .pix-copy-icon:hover {
+  transform: scale(1.1);
+  transition: 0.2s ease-in-out;
+}
+
+.service-details-box{
+  background-color: #FFF;
+  border-radius: 10px;
+  padding: 12px;
+  border: 0.5px solid #332402;
+}
+
+.separator{
+  border-top: 1px solid #332402; /* Linha de separação mais escura */
+}

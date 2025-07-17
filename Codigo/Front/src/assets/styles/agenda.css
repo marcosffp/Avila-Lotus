@@ -1,0 +1,401 @@
+:root{
+    background-color: #F2ECDF;
+}
+body{
+    background-color: #F2ECDF;
+}
+
+.logo {
+    width: 50%;
+    margin: 0 auto 20px;
+    display: block;
+    filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
+}
+
+.container-home {
+    padding: 0;
+    padding-top: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url(https://www.clinicahumanita.com.br/wp-content/uploads/2024/02/Massagem-com-oleos-aquecidos.png) no-repeat center/cover;
+    color: var(--color-primary);
+}
+
+.container-home img {
+    width: 30%;
+    margin-bottom: 20px;
+    filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
+}
+
+.tabs {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 50px; 
+    margin-bottom: 20px;
+}
+
+.tab {
+    font-size: 18px;
+    font-weight: 550;
+    border-bottom: 2px solid transparent;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.tab:hover,
+.tab.active {
+    border-bottom: 2px solid var(--color-accent); 
+    color: var(--color-accent);
+}
+
+.container-main {
+    width: 100%;
+    padding: 0 20%;
+    padding-bottom: 10%;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    margin-bottom: 0;
+}
+
+.mes-atual {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.dias-container {
+    width: 80%;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10px;
+    padding: 10px;
+    scroll-behavior: smooth; /* Suaviza o scroll */
+    overflow-x: auto;
+    scrollbar-width: none; /* Remove scrollbar no Firefox */
+    -ms-overflow-style: none; /* Remove scrollbar no IE */
+}
+
+/* Remove a barra de rolagem no Chrome, Edge e Safari */
+.dias-container::-webkit-scrollbar {
+    display: none;
+}
+
+.dias-container > * {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px; /* Tamanho fixo para todas as bolinhas */
+    width: 30px; /* Tamanho fixo para todas as bolinhas */
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 50%; /* Garante que seja um círculo perfeito */
+    flex-shrink: 0; /* Impede que os itens sejam reduzidos em telas menores */
+}
+
+.dias-container > *:hover {
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+    transform: scale(1.1);
+    transition: 200ms ease-in;
+}
+
+.horarios-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap; /* Quebra linha quando necessário */
+    gap: 10px;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.horario-card {
+    position: relative; /* Para posicionar o ícone dentro do card */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 10px 15px;
+    min-width: 80px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Estiliza o botão de deletar */
+.horario-card .delete-icon {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 10px;
+}
+
+/* Efeito hover no botão */
+.horario-card .delete-icon:hover {
+    background-color: darkred;
+    transform: scale(1.1);
+}
+
+.horario-card:hover {
+    background-color: var(--color-accent);
+    color: white;
+    transform: scale(1.05);
+}
+
+.add-horario-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: var(--color-secondary);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Efeito hover */
+.add-horario-btn:hover {
+    background-color: var(--color-accent);
+    transform: scale(1.1);
+}
+
+.floating-buttons {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Espaço entre os botões */
+    z-index: 100;
+}
+
+.floating-buttons .add-horario-btn {
+    position: static;
+    margin: 0;
+}
+
+/* cards de reserva */
+.agendamento-card {
+    background-color: var(--color-secondary);
+    color: var(--color-text);
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    min-width: 300px;
+}
+
+.pendente {
+    & .status {
+        color: gold;
+    }
+}
+
+.aprovado {
+    & .status {
+        color: #2a7f62;
+    }
+}
+
+.cancelado, .cancelado_pelo_cliente, .recusado {
+    & .status {
+        color: red;
+    }
+}
+
+.card-header {
+    margin-bottom: 12px;
+}
+
+.card-header .title {
+    color: var(--color-text);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0 auto 4px auto;
+    width: fit-content;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-bottom: 1px solid transparent; /* ocupa o espaço desde o início */
+}
+
+.card-header .title:hover {
+    border-bottom: 1px solid var(--color-text);
+}
+
+
+.card-header p {
+    margin: 4px 0;
+}
+
+.horario {
+    font-weight: bold;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 12px;
+    gap: 10px;
+}
+
+.preco {
+    font-weight: bold;
+    color: #2a7f62;
+    margin: 0;
+}
+
+.detalhes-btn {
+    background: none;
+    border: 2px solid var(--color-accent);
+    color: var(--color-accent);
+    font-weight: bold;
+    font-size: medium;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.detalhes-btn:hover {
+    background-color: var(--color-accent);
+    color: var(--color-secondary);
+}
+
+.cancelar-btn {
+    background: none;
+    border: 2px solid var(--color-accent);
+    color: var(--color-accent);
+    font-weight: bold;
+    font-size: medium;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.cancelar-btn:hover {
+    background-color: var(--color-accent);
+    color: var(--color-secondary);
+}
+
+.hidden {
+    display: none !important;
+}
+
+#information-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid #332402;
+    color: var(--color-primary);
+    background: rgb(65, 65, 65); /* Fundo translúcido */
+    border-radius: 15px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    width: 90%;
+    max-width: 400px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 20;
+}
+
+#information-modal::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(129, 112, 96, 0.5); /* Fundo escurecido */
+    z-index: -1;
+}
+
+#information-modal .modal-title {
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+.modal-buttons {
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+}
+
+#fechar-modal-btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    background-color: var(--color-secondary);
+    color: white;
+}
+
+#fechar-modal-btn:hover {
+    background-color: var(--color-accent);
+    transform: translateY(-1px);
+}
+
+@media (max-width: 770px) {
+    .container-main {
+        padding: 0 20px;
+    }
+
+    .container-home {
+        padding-top: 30%;
+        padding-bottom: 5%;
+    }
+
+    .container-home img {
+        width: 50%;
+    }
+
+    .title h2 {
+        font-size: 1.5rem;
+    }
+
+    #reserve-btn {
+        font-size: 1rem;
+        padding: 10px 15px;
+    }
+    
+}

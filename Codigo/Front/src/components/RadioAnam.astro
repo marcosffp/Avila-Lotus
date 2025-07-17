@@ -1,0 +1,74 @@
+---
+const { onChange = null, name = "", id = name } = Astro.props;
+---
+
+  <div class="container-anam">
+    <div class="question">
+      <strong><slot /></strong>
+
+      <div class="options">
+        <label for={`${id}-sim-radio`}>
+          <input 
+            type="radio" 
+            id={`${id}-sim-radio`}
+            name={name} 
+            value="Sim" 
+            onchange={onChange} 
+          /> Sim
+        </label>
+        <label for={`${id}-nao-radio`}>
+          <input 
+            type="radio" 
+            id={`${id}-nao-radio`}
+            name={name} 
+            value="Não" 
+            onchange={onChange} 
+          /> Não
+        </label>
+      </div>
+    </div>
+  </div>
+
+<style>
+  .container-anam {
+    font-size: 15px;
+    color: #332402;
+    padding: 0.5rem 1rem;
+  }
+
+  .options {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    font-size: 14px;
+    gap: 5px;
+  }
+
+  .options input[type="radio"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: solid #332402;
+    border-width: 2px 2px 3px;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: transparent;
+    display: inline-block;
+    vertical-align: text-bottom;
+  }
+
+  .options input[type="radio"]:checked {
+    background-color: #332402;
+    transition: 200ms ease-in-out;
+  }
+
+  .question {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 7px;
+  }
+  label {
+    white-space: nowrap;
+  }
+</style>

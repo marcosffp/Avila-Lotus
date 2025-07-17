@@ -1,0 +1,125 @@
+---
+import '../assets/styles/auth.css';
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+---
+
+<Layout>
+
+    <head>
+        <script>
+            import { auth } from '../assets/scripts/auth.js';
+            document.addEventListener('DOMContentLoaded', auth);
+        </script>
+        <!-- Bootstrap Icons -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    </head>
+
+    <body>
+        <div id="main-container" class="container">
+            <!-- Logo -->
+            <div class="logo">
+                <img src="/logo1 - crop.png" alt="Ávila Lótus - Logo 1 (Branco)" onclick="window.location.href='/'">
+            </div>
+
+            <!-- Tabs: Abas para alternar -->
+            <div class="tabs">
+                <span class="tab active" id="login-tab">Login</span>
+                <span class="tab" id="register-tab">Cadastro</span>
+            </div>
+
+            <!-- Formulário de Login -->
+            <div class="form" id="login-form">
+                <form action="#">
+                    <div class="input-box">
+                        <i class="bi bi-envelope"></i>
+                        <input id="email" type="email" name="email" placeholder="Digite seu email" required>
+                    </div>
+
+                    <div class="input-box">
+                        <i class="bi bi-lock"></i>
+                        <input id="password" type="password" name="password" placeholder="Digite sua senha" required>
+                        <i class="bi bi-eye-slash toggle-password" onclick="togglePasswordVisibility('password')"></i>
+                    </div>
+
+                    <a href="#" id="forgot-password-link" class="forget-password">Esqueci minha senha</a>
+                    <Button id="login-btn">Entrar</Button>
+                </form>
+            </div>
+
+            <!-- Formulário de Cadastro -->
+            <div class="form" id="register-form" style="display: none;">
+                <form>
+                    <div class="input-type-group">
+                        <div class="input-type-box">
+                            <input type="radio" name="userType" id="professional" value="professional"
+                                onclick="toggleRegisterForm('professional')">
+                            <label for="professional">Profissional</label>
+                        </div>
+                        <div class="input-type-box">
+                            <input type="radio" name="userType" id="user" value="user"
+                                onclick="toggleRegisterForm('user')">
+                            <label for="user">Cliente</label>
+                        </div>
+                    </div>
+
+                    <!-- Campo adicional para Profissional -->
+                    <div class="input-box professional-field">
+                        <i class="bi bi-shield-check"></i>
+                        <input id="register-code" type="text" name="code" placeholder="Código de Verificação" required>
+                    </div>
+                    
+                    <div class="input-box">
+                        <i class="bi bi-envelope"></i>
+                        <input id="register-email" type="email" name="email" placeholder="Digite seu email" required>
+                    </div>
+
+                    <div class="input-box">
+                        <i class="bi bi-lock"></i>
+                        <input id="register-password" type="password" name="password" placeholder="Crie sua senha"
+                            required>
+                        <i class="bi bi-eye-slash toggle-password"
+                            onclick="togglePasswordVisibility('register-password')"></i>
+                    </div>
+                    <div class="password-strength" style="display: none;">
+                        <div class="progress">
+                            <div id="register-password-strength-bar" class="progress-bar" style="width:0%;height:4px;"></div>
+                        </div>
+                        <ul class="password-strength-items">
+                            <li id="register-rule-length">A senha tem pelo menos 5 caracteres.</li>
+                            <li id="register-rule-number">A senha deve conter pelo menos um número.</li>
+                            <li id="register-rule-special">A senha deve conter pelo menos um símbolo.</li>
+                            <li id="register-rule-upper">A senha deve conter pelo menos uma letra maiúscula.</li>
+                            <li id="register-rule-lower">A senha contém pelo menos uma letra minúscula.</li>
+                        </ul>
+                    </div>
+
+                    <Button id="register-btn">Cadastrar</Button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Modal de Recuperar Senha -->
+        <div id="forgot-password-modal" class="forgot-password-modal">
+            <div class="forgot-password-content">
+                <h2>Recuperar Senha</h2>
+                <form id="forgot-password-form">
+                    <div class="input-box">
+                        <i class="bi bi-envelope"></i>
+                        <input id="forgot-email" type="email" name="email" placeholder="Digite seu email" required>
+                    </div>
+
+                    <div class="messges">
+                        <p id="forgot-password-message" class="text-[var(--color-primary)] text-sm mb-3"></p>
+                        <p id="forgot-password-error" class="text-red-500 text-sm mb-3"></p>
+                    </div>
+
+                    <Button id="pwd-request-btn">Enviar</Button>
+                    
+                </form>
+                <a href="#" id="close-forgot-password" class="close-modal">Fechar</a>
+            </div>
+        </div>
+
+    </body>
+</Layout>

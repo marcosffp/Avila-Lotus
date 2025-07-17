@@ -1,0 +1,36 @@
+---
+import Button from "../Button.astro"
+import "../../assets/styles/modals/report-modal.css"
+---
+
+<article class="modal hidden" id="relatorio-modal">
+  <div class="modal-content">
+    <h2>Pedido de Relatório</h2>
+    <form id="report-form" class="report-form">
+      <div class="intervalo-label">
+        <label for="data-inicio">Intervalo de tempo</label>
+      </div>
+      <div class="intervalo-inputs">
+        <input type="date" id="data-inicio" name="data-inicio" required>
+        <span>até</span>
+        <input type="date" id="data-fim" name="data-fim" required>
+      </div>
+      <div class="ou-divider">
+        <span>Ou preencha automaticamente: </span>
+      </div>
+      <div class="mes-atual-btn">
+        <Button id="mes-atual-btn" type="button">Mês atual</Button>
+      </div>
+      <div id="report-error" class="report-error"></div>
+    </form>
+    <div class="modal-buttons" style="display: flex; gap: 1rem; justify-content: flex-end;">
+        <Button id="confirmar-relatorio-btn">Confirmar</Button>
+        <Button id="cancelar-relatorio-btn">Cancelar</Button>
+    </div>
+  </div>
+</article>
+
+<script>
+  import { reportModal } from "../../assets/scripts/components/modals/reportmodal.js";
+  document.addEventListener("DOMContentLoaded", reportModal);
+</script>

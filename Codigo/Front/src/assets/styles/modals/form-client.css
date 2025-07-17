@@ -1,0 +1,74 @@
+.hidden {
+    display: none !important;
+  }
+
+#confirmacao-agendamento-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid #332402;
+    color: var(--color-primary);
+    background: rgb(65, 65, 65); /* Fundo translúcido */
+    border-radius: 15px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    width: 90%;
+    max-width: 400px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 20;
+}
+
+#confirmacao-agendamento-modal::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(129, 112, 96, 0.5); /* Fundo escurecido */
+    z-index: -1;
+}
+
+#confirmacao-agendamento-modal .modal-title {
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+.modal-buttons {
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+}
+
+#agendamento-confirm-btn,
+#agendamento-cancel-btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+#agendamento-confirm-btn {
+    background-color: var(--color-secondary);
+    color: white;
+}
+
+#agendamento-cancel-btn {
+    background-color: transparent;
+    border: 3px solid var(--color-text);
+    color: white;
+}
+
+#agendamento-confirm-btn:hover,
+#agendamento-cancel-btn:hover {
+    background-color: var(--color-accent);
+    transform: translateY(-1px);
+}

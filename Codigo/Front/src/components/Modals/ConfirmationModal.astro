@@ -1,0 +1,57 @@
+---
+import Button from "../Button.astro"
+import "../../assets/styles/modals/confirmation.css"
+
+const { title, content } = Astro.props
+---
+
+<article class="modal hidden" id="confirmation-modal">
+    <h2>{title}</h2>
+    <p>{content}</p>
+    <div class="button-group">
+        <Button id="confirm-btn" class="confirm-button">OK</Button>
+        <Button id="cancel-btn" class="cancel-button">Cancelar</Button>
+    </div>
+</article>
+
+<script>
+    const confirmationModal = document.getElementById('confirmation-modal');
+    const confirmButton = document.getElementById('confirm-btn');
+    const cancelButton = document.getElementById('cancel-btn');
+
+    // Fechar modal e disparar evento de confirmação
+    confirmButton?.addEventListener('click', () => {
+        confirmationModal?.classList.add('hidden');
+        window.dispatchEvent(new CustomEvent('confirmation-modal:confirmed'));
+    });
+
+    // Fechar modal e disparar evento de cancelamento
+    cancelButton?.addEventListener('click', () => {
+        confirmationModal?.classList.add('hidden');
+        window.dispatchEvent(new CustomEvent('confirmation-modal:cancelled'));
+    });
+
+    // Fechar ao pressionar ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !confirmationModal?.classList.contains('hidden')) {
+            confirmationModal?.classList.add('hidden');
+        }
+    });
+</script>
+
+<style>
+    .button-group {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1.5rem;
+        justify-content: flex-end;
+    }
+
+    .confirm-button {
+        background-color: var(--color-success);
+    }
+
+    .cancel-button {
+        background-color: var(--color-error);
+    }
+</style>

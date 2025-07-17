@@ -1,0 +1,84 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Button from "../components/Button.astro";
+import Input from "../components/Input.astro";
+import CampoAnam from "../components/CampoAnam.astro";
+import RadioAnam from "../components/RadioAnam.astro";
+
+import "../assets/styles/profile.css";
+import InformativeModal from "../components/Modals/InformativeModal.astro";
+
+const ontem = new Date(new Date().setDate(new Date().getDate() - 1)).toISOString().split("T")[0];
+---
+
+<Layout>
+  <Header />
+
+  <InformativeModal 
+    title="Bem Vindo!" 
+    content="Sua conta na Ávila Lótus foi criada com sucesso! Agora preencha sua seção de informações para começar a usar nossos serviços."
+  />
+
+  <main>
+    <section class="container-home">
+      <img
+        src="/logo1 - crop.png"
+        class="logo"
+        alt="Ávila Lótus - Logo 1 (Branco)"
+      />
+    </section>
+
+    <section class="container-main">
+      <section class="about">
+        <div class="title">
+          <h2>Informações</h2>
+          <Button id="edit-info-btn">Editar</Button>
+        </div>
+        <div class="details">
+          <Input id="nome-input" placeholder="Seu nome..." type="text" disabled required>Nome:</Input>
+          <Input id="telefone-input" placeholder="(xx) xxxxx-xxxx" type="tel" disabled required>Telefone:</Input>
+          <Input id="dataDeNascimento-input" placeholder="DD/MM/AAAA" type="date" class="small-input" max={ontem} disabled>Nascimento:</Input>
+          <Input id="CPF-input" placeholder="***.***.***-**" type="text" class="small-input" disabled>CPF:</Input>
+          <Input id="email-input" placeholder="email@mail.com" type="email" disabled>E-mail:</Input>
+          <Input id="PIX-input" placeholder="xxxxxxxxxxxxxxx" type="text" disabled required>Chave Pix:</Input>
+        </div>
+        <div id={`form-error`} class="input-error px-[5%] hidden text-red-600 text-sm mt-1"></div>
+      </section>
+
+      <section class="anamnese">
+        <div class="title">
+          <h2>Ficha de Anamnese</h2>
+          <Button id="edit-anam-btn">Editar</Button>
+        </div>
+        <div id="details" class="anam-details">
+          <CampoAnam name="cirurgia">Já fez alguma cirurgia?</CampoAnam>
+          <CampoAnam name="remedio">Toma algum remédio?</CampoAnam>
+          <CampoAnam name="anticoncepcional">Toma anticoncepcional?</CampoAnam>
+          <CampoAnam name="alergiaMedicamento">Alergia a medicamento?</CampoAnam>
+          <CampoAnam name="pressao">Sabe qual é sua pressão?</CampoAnam>
+          <CampoAnam name="tratamento">Faz tratamento médico?</CampoAnam>
+          
+          <!-- RadioAnam com IDs corretos -->
+          <RadioAnam name="gestante" id="gestante">Está gestante?</RadioAnam>
+          <RadioAnam name="problemas" id="problemas">Problemas no fígado ou rim?</RadioAnam> <!-- Corrigido name -->
+          <RadioAnam name="fumante" id="fumante">Você é fumante?</RadioAnam>
+          <RadioAnam name="hepatite" id="hepatite">Já teve hepatite?</RadioAnam>
+          <RadioAnam name="diabetes" id="diabetes">Tem diabetes?</RadioAnam>
+          <RadioAnam name="asma" id="asma">Tem asma?</RadioAnam>
+          <RadioAnam name="cardiaco" id="cardiaco">Tem problema cardíaco?</RadioAnam>
+          <RadioAnam name="convulsao" id="convulsao">Já teve convulsão?</RadioAnam>
+          <RadioAnam name="renal" id="renal">Tem problema renal?</RadioAnam>
+          <RadioAnam name="tontura" id="tontura">Costuma sentir tontura?</RadioAnam>
+          <h3 class="mx-auto text-center">Queixas</h3>
+          <input id="queixas-input" class="complains" type="text" placeholder="Descreva suas queixas..." />
+        </div>
+      </section>
+    </section>
+  </main>
+</Layout>
+
+<script>
+import { profile } from '../assets/scripts/profile.js';
+document.addEventListener('DOMContentLoaded', profile);
+</script>

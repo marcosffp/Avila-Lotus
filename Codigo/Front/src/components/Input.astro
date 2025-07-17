@@ -1,0 +1,63 @@
+---
+const {
+  id,
+  placeholder = "",
+  value = "",
+  onInput = null,
+  type = "text",
+  class: customClass = "",
+  disabled = true,
+  ...rest
+} = Astro.props;
+---
+
+<div class={`input-container ${customClass}`}>
+  <strong><slot /></strong>
+  <input
+    id={id}
+    class="custom-input"
+    type={type}
+    placeholder={placeholder}
+    value={value}
+    oninput={onInput}
+    disabled={disabled}
+    {...rest}
+  />
+</div>
+
+<style>
+  .input-container {
+    display: inline-block;
+    margin: 0.5rem;
+  }
+
+  .custom-input {
+    margin-left: 0.25rem;
+    height: 25px;
+    width: auto;
+    padding: 0.75rem 1rem;
+    font-size: 16px;
+    color: #332402;
+    border: 2px solid #332402;
+    border-radius: 25px;
+    border-width: 2px 2px 5px;
+    background-color: #f6f2eb;
+    outline: none;
+    transition: all 0.3s ease;
+    height: fit-content;
+  }
+
+  .custom-input:focus {
+    border-color: #6d4e25;
+    box-shadow: 0 0 5px #6d4e25;
+  }
+
+  .custom-input::placeholder {
+    color: #8c6b41;
+    opacity: 0.7;
+  }
+
+  .small-input .custom-input {
+    width: 150px;
+  }
+</style>

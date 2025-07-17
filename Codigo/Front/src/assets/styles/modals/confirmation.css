@@ -1,0 +1,79 @@
+#confirmation-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid #332402;
+    color: var(--color-primary);
+    background: rgba(255, 255, 255, 0.1); /* Translucent background */
+    border-radius: 15px;
+    padding: 2rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    width: 90%;
+    max-width: 400px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 20; /* Ensure it appears above most content */
+}
+
+/* Optional: Add a dark overlay for a glass-like effect */
+#confirmation-modal::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Darkened overlay */
+    z-index: -1; /* Make sure the overlay is behind the modal */
+}
+
+#confirmation-modal h2 {
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+#confirmation-modal p {
+    font-size: 1rem;
+    text-align: center;
+}
+
+.button-group {
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+#confirm-btn,
+#cancel-btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+#confirm-btn {
+    background-color: var(--color-secondary);
+    color: white;
+}
+
+#cancel-btn {
+    background-color: transparent;
+    border: 3px solid var(--color-text);
+    color: white;
+}
+
+#confirm-btn:hover {
+    background-color: var(--color-accent);
+    transform: translateY(-1px);
+}
+
+#cancel-btn:hover {
+    background-color: var(--color-accent);
+    transform: translateY(-1px);
+}

@@ -1,0 +1,152 @@
+---
+import ConfirmationModal from "./Modals/ConfirmationModal.astro";
+---
+
+<header class="header">
+    <div class="logo-text" onclick="window.location.href='/'">
+        Ávila Lótus
+    </div>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu">
+        ☰
+    </button>
+    <nav id="nav-menu">
+        <a href="/" id="home-link">Home</a>
+        <a href="/sobre" id="about-link">Sobre</a>
+        <a href="/agenda" id="reserve-link">Agenda</a>
+        <a href="/profile" id="profile-link">Perfil</a>
+        <a href="/auth" id="auth-link">Entrar</a>
+        <a href="/" id="logout-link">Sair</a>
+    </nav>
+</header>
+
+<ConfirmationModal title="Deseja realmente sair?" content="Você será redirecionado para a página de login." />
+
+<script>
+import { header } from '../assets/scripts/components/header.js'
+document.addEventListener('DOMContentLoaded', header);
+</script>
+
+<style>
+    .header {
+        position: fixed;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 2%;
+        background-color: rgba(62, 53, 46, 0.8);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        box-sizing: border-box;
+        z-index: 15;
+    }
+
+    .logo-text {
+        font-size: 1.5rem;
+        font-weight: 500;
+        font-family: var(--title-font);
+        color: var(--color-primary);
+        cursor: pointer;
+        transition: color 200ms ease-in-out;
+    }
+
+    .logo-text:hover {
+        color: var(--color-secondary);
+    }
+
+     .logo-image {
+        height: 40px;
+        cursor: pointer;
+        transition: transform 200ms ease-in-out;
+    }
+
+    .logo-image:hover {
+        transform: scale(1.1);
+    }
+
+    #auth-link {
+        padding: 5px 10px;
+        border: 2px solid var(--color-primary);
+        border-radius: 8px;
+        transition: background-color 200ms ease-in-out, color 200ms ease-in-out;
+    }
+
+    #auth-link:hover {
+        background-color: var(--color-primary);
+        color: var(--color-secondary);
+        border-radius: 10px;
+    }
+
+    nav {
+        display: flex;
+        gap: 1.5rem;
+    }
+
+    nav a {
+        text-decoration: none;
+        font-size: 1.2rem;
+        color: var(--color-primary);
+        font-weight: 600;
+        transition: color 200ms ease-in-out, transform 200ms ease-in-out;
+        padding: 5px 10px;
+        border-radius: 8px; 
+    }
+
+    nav a:hover {
+        background-color: var(--color-primary);
+        color: var(--color-primary-3);
+        transform: scale(1.05);
+    }
+
+    .menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 1.8rem;
+        color: var(--color-primary);
+        cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+        .header {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-text {
+            font-size: 1.4rem;
+            padding: 5px;
+        }
+
+        #auth-link {
+            padding: 3px 8px;
+            font-size: 1rem;
+        }
+
+        nav {
+            display: none;
+            flex-direction: column;
+            gap: 1rem;
+            background-color: rgba(62, 53, 46, 0.8);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            padding: 20px;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+        }
+
+        nav.active {
+            display: flex;
+        }
+
+        .menu-toggle {
+            display: block;
+            z-index: 2;
+        }
+    }
+</style>

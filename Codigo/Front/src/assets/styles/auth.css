@@ -1,0 +1,328 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+              url(https://www.clinicahumanita.com.br/wp-content/uploads/2024/02/Massagem-com-oleos-aquecidos.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); 
+  z-index: -1; 
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 2rem;
+  width: 100%;
+  max-width: 400px;
+  background-color: rgba(255, 255, 255, 0.089);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.logo img {
+  width: 120px; 
+  margin-bottom: 20px; 
+  filter: drop-shadow var(color-shadow);
+  transition: 200ms ease-in-out;
+}
+
+.logo img:hover {
+  transform: scale(1.1);
+  transition: 200ms ease-in-out;
+  filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5)); 
+}
+
+.tabs {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 50px; 
+  margin-bottom: 20px;
+}
+
+.tab {
+  font-size: 18px;
+  font-weight: 550;
+  color: var(--color-primary);
+  border-bottom: 2px solid transparent;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.tab:hover,
+.tab.active {
+  border-bottom: 2px solid var(--color-accent); 
+  color: var(--color-accent);
+}
+
+.input-type-group {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px; 
+  margin-bottom: 1rem;
+}
+
+.input-type-box {
+  display: flex;
+  align-items: center; 
+  gap: 5px; 
+}
+
+.input-type-box label {
+  color: var(--color-primary);
+  margin-left: 5px;
+}
+
+.input-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-box {
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 200, 200, 0);
+  padding: 0.37rem 1.2rem;
+  border-radius: 4px;
+  margin: 0.5rem;
+  box-shadow: 2px 9px 16px #0000001c;
+  backdrop-filter: blur(20px);
+  position: relative;
+}
+
+.input-box input {
+  width: 180px;
+  border: none;
+  background: transparent;
+  outline: none;
+  color: var(--color-primary);
+  font-size: 14px;
+  padding: 10px;
+}
+
+.input-box i {
+  color: var(--color-primary);
+  margin-right: 10px;
+}
+
+.input-box .toggle-password {
+  position: absolute;
+  right: 5px;
+  cursor: pointer;
+}
+
+.lembra {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 14px;
+  margin-top:10px;
+  color: var(--color-primary);
+
+}
+
+.lembra a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.lembra a:hover {
+  text-decoration: underline;
+}
+
+.forget-password {
+  font-size: 12px;
+  color: var(--color-primary);
+  margin-top: 5px; 
+  text-align: right;
+  display: block;
+  cursor: pointer;
+}
+
+.forget-password:hover {
+  text-decoration: underline;
+}
+
+/* Modal de Recuperar Senha */
+.forgot-password-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0); 
+  width: 90%;
+  max-width: 400px;
+  background-color: rgba(255, 255, 255, 0.089);
+  backdrop-filter: blur(15px);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow:  var(--color-shadow);
+  text-align: center;
+  display: none; 
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  opacity: 0; 
+  z-index: 1000;
+}
+
+.forgot-password-modal.active {
+  display: block;
+  transform: translate(-50%, -50%) scale(1); 
+  opacity: 1;
+}
+
+.forgot-password-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.forgot-password-content .modal-logo {
+  width: 80px;
+  margin-bottom: 1rem;
+}
+
+.forgot-password-content h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+}
+
+.forgot-password-content p {
+  font-size: 14px;
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+}
+
+.forgot-password-modal .input-box {
+  background: rgba(255, 200, 200, 0);
+  border-radius: 8px;
+  padding: 0.6rem;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  width: 100%;
+  background: transparent;
+}
+
+.forgot-password-modal .input-box input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  color: var(--color-primary);
+  padding: 0.5rem;
+}
+
+.forgot-password-modal .input-box i {
+  color: var(--color-primary);
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.forgot-password-modal .close-modal {
+  display: inline-block;
+  color: var(--color-primary);
+  margin-top: 1rem;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.forgot-password-modal .close-modal:hover {
+  text-decoration: underline;
+}
+
+.btn {
+  width: 100%;
+}
+
+.hidden {
+  display: none;
+}
+
+.password-strength {
+    margin-top: 0.2rem;
+    margin-bottom: 0.7em;
+    padding: 0;
+    font-size: 0.85em;
+    text-align: left;
+
+}
+
+.password-strength .progress {
+    margin-bottom: 0.2em;
+    width: 100%;
+    max-width: 278px;
+    margin-left: auto;
+    margin-right: auto;
+    background: #eee;
+    border-radius: 2px;
+    height: 3px;
+    min-height: 3px;
+    margin-bottom: 0.5rem;
+}
+
+.progress {
+    width: 100%;
+    background: #eee;
+    border-radius: 2px;
+    margin-bottom: 0.5rem;
+    height: 3px; 
+    min-height: 3px;
+    max-height: 3px;
+}
+.progress-bar {
+    height: 3px;
+    background: #d6439e;
+    border-radius: 2px;
+    width: 0%;
+    transition: width 0.3s;
+}
+.password-strength-items {
+  list-style: none;
+  padding: 0;
+  margin: 0 0.5em;
+  text-align: left;
+  max-width: 288px;
+}
+
+.password-strength-items li {
+    color: #e53935;
+    font-size: 0.85em; 
+    margin-bottom: 0.1em;
+    padding-left: 0;
+}
+
+.password-strength-items li.valid {
+    color: #2ecc40;
+    font-weight: 500;
+}

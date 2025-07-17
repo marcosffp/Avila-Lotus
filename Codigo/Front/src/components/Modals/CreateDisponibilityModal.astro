@@ -1,0 +1,24 @@
+---
+import Button from "../Button.astro"
+import Input from "../Input.astro"
+
+import "../../assets/styles/modals/form-modal.css"
+
+const hoje = new Date().toISOString().split("T")[0];
+---
+
+<article class="modal hidden" id="disponibility-modal">
+    <form class="w-max flex flex-col ">
+        <Input id="disponibility-date-input" type="date" min={hoje} disabled={false}>Data</Input>
+        <Input id="disponibility-time-input" type="time" disabled={false}>Hora</Input>
+    </form>
+    <div class="modal-buttons">
+        <Button id="disponibility-create-btn">Criar</Button>
+        <Button id="disponibility-cancel-btn">Cancelar</Button>
+    </div>
+</article>
+
+<script>
+import { createDisponibilityModal } from "../../assets/scripts/components/modals/createdisponibility.js";
+document.addEventListener("DOMContentLoaded", createDisponibilityModal);
+</script>

@@ -1,0 +1,278 @@
+#relatorio-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 2.5px solid #6d4e25;
+  border-radius: 18px;
+  padding: 2rem 1.5rem;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  width: 95%;
+  max-width: 370px;
+  background: rgba(255, 255, 255, 0.1); 
+  color: var(--color-primary);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px 0 rgba(34, 24, 6, 0.18);
+  box-sizing: border-box;
+}
+
+#relatorio-modal .modal-content {
+  width: 100%;
+}
+
+#relatorio-modal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+  border-radius: 18px;
+  pointer-events: none;
+}
+
+#relatorio-modal.hidden {
+  display: none !important;
+}
+
+.modal-content h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--color-secondary);
+  text-align: center;
+  letter-spacing: 0.01em;
+  margin-bottom: 1.5rem;
+}
+
+.intervalo-label {
+  margin-bottom: 1.5rem; 
+}
+
+.intervalo-label label,
+.ou-label span {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.intervalo-inputs {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;          
+  margin-bottom: 0.5rem;
+  justify-content: center; 
+  padding: 0 0rem;    
+}
+
+#data-inicio,
+#data-fim {
+  width: 54%;       
+  min-width: 0;
+  padding: 8px 10px;
+  font-size: 0.9rem;
+  border: 2px solid #6d4e25;
+  border-radius: 10px;
+  background-color: #f6f2eb;
+  color: #332402;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+#data-inicio:focus,
+#data-fim:focus {
+  border-color: var(--color-accent, #b88c4a);
+  box-shadow: 0 0 5px var(--color-accent, #b88c4a);
+}
+
+#data-inicio::-webkit-calendar-picker-indicator,
+#data-fim::-webkit-calendar-picker-indicator {
+  margin-left: 2px; 
+  filter: invert(0.5); 
+  cursor: pointer;
+}
+
+.ou-label {
+    margin-top: 10px;
+  width: 100%;
+  text-align: center;
+  font-size: 0.95rem;
+  color: #8c6b41;
+  margin: 0.3rem 0 0.2rem 0;
+  font-style: italic;
+}
+
+.mes-atual-btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.5rem 0 0.2rem 0; /* menos espaço acima e abaixo */
+}
+
+#mes-atual-btn {
+  min-width: 120px;
+  width: auto;
+  padding: 8px 18px;
+  margin: 0 auto;
+  display: block;
+}
+
+#mes-atual-btn {
+  background: var(--color-accent, #816336);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 22px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(109, 78, 37, 0.08);
+  transition: background 0.2s, transform 0.2s;
+  letter-spacing: 0.01em;
+}
+
+#mes-atual-btn:hover {
+  background: var(--color-secondary, #6d4e25);
+  color: #fff;
+  transform: scale(1.04);
+}
+
+#report-error {
+  color: #d32f2f;
+  font-size: 0.98rem;
+  margin-top: 0.2rem;
+  min-height: 1.2em;
+  text-align: center;
+}
+
+.modal-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+#confirmar-relatorio-btn,
+#cancelar-relatorio-btn {
+  width: 48%;
+  font-size: 1rem;
+  padding: 10px;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+}
+
+#confirmar-relatorio-btn {
+  background-color: var(--color-secondary, #6d4e25);
+  color: var(--color-primary, #fff);
+}
+
+#confirmar-relatorio-btn:hover {
+  background-color: var(--color-accent, #b88c4a);
+  color: #fff;
+  transform: scale(1.03);
+}
+
+#cancelar-relatorio-btn {
+  background-color: transparent;
+  color: #332402;
+  border: 2px solid #332402;
+}
+
+#cancelar-relatorio-btn:hover {
+  background-color: #332402;
+  color: #f6f2eb;
+  transform: scale(1.03);
+}
+
+.ou-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 1rem 0 0.5rem 0;
+  width: 100%;
+  color: var(--color-primary);
+  font-style: italic;
+  font-size: 1rem;
+  font-weight: 500;
+    margin-bottom: 1.5rem; 
+
+}
+
+.ou-divider::before,
+.ou-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid var(--color-secondary);
+  margin: 0 8px;
+}
+
+@media (max-width: 480px) {
+  #relatorio-modal {
+    padding: 1rem 0.2rem;
+    max-width: 99vw;
+    min-width: 0;
+  }
+  .modal-content h2 {
+    font-size: 1.1rem;
+    margin-bottom: 0.7rem;
+    font-weight: 700;
+  }
+  .intervalo-label label,
+  .ou-label span {
+    font-size: 0.95rem;
+    margin-bottom: 0.2rem;
+  }
+  .intervalo-inputs {
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: 0;
+  }
+  #data-inicio,
+  #data-fim {
+    width: 70%;         
+    font-size: 0.85rem;
+    padding: 5px 4px;
+    border-radius: 7px;
+    margin: 0 auto;    
+    display: block;
+  }
+  .mes-atual-btn {
+    margin-bottom: 0.08rem;
+  }
+  #mes-atual-btn {
+    font-size: 0.85rem;
+    padding: 6px 10px;
+    border-radius: 7px;
+  }
+  .modal-buttons {
+    flex-direction: row;    
+    gap: 0.4rem;
+    margin-top: 0.5rem;
+    justify-content: center;
+    align-items: center;
+  }
+  #confirmar-relatorio-btn,
+  #cancelar-relatorio-btn {
+    width: 48%;      
+    margin: 0;
+    padding: 7px 0px;
+    font-size: 0.9rem;
+    border-radius: 15px;
+  }
+}
+

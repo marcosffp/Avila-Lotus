@@ -1,0 +1,197 @@
+:root {
+    background-color: #F2ECDF;
+}
+
+body {
+    background-color: #F2ECDF;
+}
+
+/* Logo */
+.logo {
+    width: 50%;
+    margin: 0 auto 20px;
+    display: block;
+    filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5)); 
+}
+
+/* Container Home */
+.container-home {
+    height: 50vh;
+    padding-top: 10%;
+    padding-bottom: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url(https://www.clinicahumanita.com.br/wp-content/uploads/2024/02/Massagem-com-oleos-aquecidos.png) no-repeat center/cover;
+    color: var(--color-primary);
+}
+
+.container-home img {
+    width: 30%;
+    margin-bottom: 20px;
+    filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
+}
+
+/* Container Principal */
+.container-main {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    padding-bottom: 5rem;
+    display: flex;
+    flex-direction: column;
+}
+.anam-details{
+    background-color: #f6f2eb;
+    margin-top: 10px;
+    border-radius: 8px;
+    padding: 0 75px 25px;
+    width: auto;
+}
+/* Seções comuns */
+.about, .services {
+	width: 100%;
+	margin: 20px 0;
+	padding: 0 20px;
+}
+
+/* Título com botão */
+.title {
+    width: 100%;
+    display: flex;
+    align-items: center; 
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.title h2 {
+    flex-grow: 1;
+    font-size: 1.8rem;
+    text-align: left;
+    margin: 0; 
+}
+
+.title .btn {
+    font-size: 1.1rem; 
+    padding: 5px 10px; 
+    margin: 0;
+    height: auto;
+    background: beige;
+    color: var(--color-accent);
+    border: solid 1px var(--color-text);
+    border-bottom: solid 3px var(--color-text);
+    transition: 200ms ease-in-out;
+}
+
+.title .btn:hover {
+    transform: scale(1.05);
+    transition: 200ms ease-in-out;
+    background: var(--color-accent);
+    color: var(--color-primary);
+}
+
+/* Botão principal */
+.container-main > .btn {
+    padding: 20px 20px;
+    font-size: 1.2rem;
+    color: var(--color-text);
+    border: solid 1px var(--color-text);
+    border-bottom: solid 3px var(--color-text);
+    transition: 200ms ease-in-out;
+}
+
+/* Itens exclusivos da segunda página */
+.massoterapy-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 75%;
+    margin: 20px auto 0;
+    padding: 20px;
+    background: var(--color-background);
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.massoterapy-item img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+
+.massoterapy-item p {
+    font-size: 1rem;
+    text-align: justify;
+}
+
+.btn-group {
+    display: flex;
+    width: 75%;
+    justify-content: center;
+    gap: 5%;
+}
+
+.details {
+    padding: 0 5%;
+}
+
+.complains {
+    display: flex;
+    width: 75%;
+    margin: 20px auto 0;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.complains:focus {
+    outline: none;
+    border-color: #6d4e25;
+    box-shadow: 0 0 4px #6d4e25;
+}
+
+/* Responsividade */
+@media (max-width: 770px) {
+    .container-main {
+        padding: 0 20px;
+    }
+
+    .container-home {
+        padding-top: 30%;
+        padding-bottom: 5%;
+    }
+
+    .container-home img {
+        width: 50%;
+    }
+
+    .title h2 {
+        font-size: 1.5rem;
+    }
+
+    .title .btn {
+        font-size: 0.9rem;
+    }
+
+    .massoterapy-item {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .btn-group {
+        width: 90%;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .massoterapy-item p {
+        font-size: 0.95rem;
+    }
+
+    .anam-details {
+        padding: 0 5px 25px;
+    }
+}

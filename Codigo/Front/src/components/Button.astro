@@ -1,0 +1,32 @@
+---
+const { id, href } = Astro.props
+---
+
+<style>
+.btn {
+  padding: 10px 0;
+  border: none;
+  border-radius: 8px;
+  background: beige;
+  color: var(--color-accent);
+  font-size: 16px;
+  font-weight: 550;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+  font-family: var(--text-font);
+}
+
+.btn:hover {
+  background: var(--color-border);
+  color: var(--color-primary); 
+}
+</style>
+
+<button 
+  class="btn" 
+  id={id}
+  onclick={href ? `window.location.href = '${href}'` : 'return false;'}
+>
+  <slot />
+</button>
